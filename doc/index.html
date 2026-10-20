@@ -167,6 +167,38 @@
     .figure-card { padding: clamp(16px, 3vw, 34px); }
     .figure-card img { display: block; width: 100%; height: auto; border-radius: 8px; }
     figcaption { margin: 20px auto 0; max-width: 780px; color: var(--muted); text-align: center; font-size: .95rem; }
+    .overview-grid, .artifact-grid, .figure-grid {
+      display: grid;
+      gap: 20px;
+    }
+    .overview-grid { grid-template-columns: repeat(3, 1fr); }
+    .artifact-grid { grid-template-columns: repeat(2, 1fr); }
+    .figure-grid { grid-template-columns: repeat(2, 1fr); }
+    .mini-card { padding: 25px; }
+    .mini-card h3 { margin: 0 0 8px; color: var(--navy); font-size: 1.05rem; }
+    .mini-card p { margin: 0; color: var(--muted); font-size: .94rem; }
+    .mini-card a, .text-link { color: var(--blue); font-weight: 750; text-decoration: none; }
+    .mini-card a:hover, .text-link:hover { text-decoration: underline; }
+    .figure-tile { overflow: hidden; }
+    .figure-tile img { display: block; width: 100%; height: 245px; object-fit: contain; background: #f8fafc; }
+    .figure-tile .tile-copy { padding: 18px 20px 20px; }
+    .figure-tile h3 { margin: 0 0 5px; color: var(--navy); font-size: 1rem; }
+    .figure-tile p { margin: 0; color: var(--muted); font-size: .88rem; }
+    .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .step { padding: 20px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+    .step-number { color: var(--blue); font-size: .75rem; font-weight: 850; letter-spacing: .1em; }
+    .step strong { display: block; margin-top: 7px; color: var(--navy); }
+    .step span { display: block; margin-top: 6px; color: var(--muted); font-size: .85rem; line-height: 1.45; }
+    .code-block {
+      padding: 22px 25px;
+      overflow-x: auto;
+      border-radius: 10px;
+      color: #dbeafe;
+      background: #0f1d31;
+      font: .86rem/1.7 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    .code-block code { white-space: pre; }
+    .note { margin-top: 15px; color: var(--muted); font-size: .9rem; }
     .table-card { overflow-x: auto; }
     table { width: 100%; min-width: 700px; border-collapse: collapse; text-align: left; }
     caption { padding: 24px 26px 12px; color: var(--muted); text-align: left; font-size: .9rem; }
@@ -220,6 +252,8 @@
       .callout { grid-template-columns: 1fr; gap: 14px; padding: 23px; }
       .figure-card { padding: 12px; }
       .limitation { padding: 22px; }
+      .overview-grid, .artifact-grid, .figure-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
       footer .wrap { align-items: flex-start; flex-direction: column; }
     }
   </style>
@@ -243,6 +277,27 @@
   </header>
 
   <main class="wrap">
+    <section aria-labelledby="overview-title">
+      <div class="section-heading">
+        <div class="eyebrow">Project overview</div>
+        <h2 id="overview-title">A measurement audit for multimodal benchmarks</h2>
+      </div>
+      <div class="overview-grid">
+        <article class="card mini-card">
+          <h3>Research question</h3>
+          <p>How much of a reported POPE score comes from the model, and how much comes from the prompt and extraction harness around it?</p>
+        </article>
+        <article class="card mini-card">
+          <h3>Experimental control</h3>
+          <p>Qwen2.5-VL-7B outputs are frozen once, then replayed under multiple prompt and answer-parsing configurations.</p>
+        </article>
+        <article class="card mini-card">
+          <h3>Dataset scale</h3>
+          <p>36,000 JSONL responses were generated for the controlled audit. Only compact aggregate results are tracked in Git.</p>
+        </article>
+      </div>
+    </section>
+
     <section aria-labelledby="tldr-title">
       <div class="section-heading">
         <div class="eyebrow">The central finding</div>
@@ -263,6 +318,20 @@
         <img src="06_analysis/architecture.png" alt="POPE audit architecture showing the pipeline from input through prompt manipulation, model processing, scoring, and output.">
         <figcaption>Identical inputs and frozen model outputs pass through controlled prompt and extraction variants: <strong>Input → Prompts → Model → Scoring → Output</strong>.</figcaption>
       </figure>
+    </section>
+
+    <section aria-labelledby="method-title">
+      <div class="section-heading">
+        <div class="eyebrow">Experimental design</div>
+        <h2 id="method-title">One model, many measurement paths</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-number">01 / INPUT</div><strong>POPE samples</strong><span>Questions, images, and ground-truth labels are held constant.</span></div>
+        <div class="step"><div class="step-number">02 / PROMPT</div><strong>Templates P1–P6</strong><span>Wording and response-format instructions are varied deliberately.</span></div>
+        <div class="step"><div class="step-number">03 / MODEL</div><strong>Frozen outputs</strong><span>Qwen2.5-VL-7B runs with 4-bit NF4 quantization.</span></div>
+        <div class="step"><div class="step-number">04 / PARSER</div><strong>Rules R1–R6</strong><span>Exact, lowercase, contains, first-token, and probability paths are replayed.</span></div>
+        <div class="step"><div class="step-number">05 / METRIC</div><strong>F1 audit</strong><span>Identical responses produce directly comparable score distributions.</span></div>
+      </div>
     </section>
 
     <section aria-labelledby="results-title">
@@ -319,6 +388,69 @@
             </tr>
           </tbody>
         </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="figures-title">
+      <div class="section-heading">
+        <div class="eyebrow">Analysis gallery</div>
+        <h2 id="figures-title">Every figure from the audit</h2>
+      </div>
+      <div class="figure-grid">
+        <figure class="card figure-tile">
+          <img src="06_analysis/03_pope_audit_architecture.svg" alt="Detailed POPE audit architecture diagram.">
+          <div class="tile-copy"><h3>Full audit architecture</h3><p>Detailed dependency and data-flow view of the evaluation harness.</p></div>
+        </figure>
+        <figure class="card figure-tile">
+          <img src="06_analysis/fig1_prompt_sensitivity.png" alt="Line chart showing prompt sensitivity across extraction rules.">
+          <div class="tile-copy"><h3>Figure 1 · Prompt sensitivity</h3><p>F1 changes across prompt templates for each extraction rule.</p></div>
+        </figure>
+        <figure class="card figure-tile">
+          <img src="06_analysis/fig2_extraction_attribution.png" alt="Bar chart showing extraction rule attribution for P1.">
+          <div class="tile-copy"><h3>Figure 2 · Extraction attribution</h3><p>The parser alone can move P1 from failure to high apparent capability.</p></div>
+        </figure>
+        <figure class="card figure-tile">
+          <img src="06_analysis/architecture.png" alt="Simplified POPE audit pipeline architecture.">
+          <div class="tile-copy"><h3>Pipeline overview</h3><p>Input, manipulation, processing, audit, and output stages.</p></div>
+        </figure>
+      </div>
+    </section>
+
+    <section aria-labelledby="repro-title">
+      <div class="section-heading">
+        <div class="eyebrow">Open research record</div>
+        <h2 id="repro-title">Reproduce and inspect</h2>
+      </div>
+      <div class="artifact-grid">
+        <div class="card mini-card">
+          <h3>Read the complete report</h3>
+          <p>Download the 8-page research report, including the preregistration context, results, and discussion.</p>
+          <p style="margin-top:14px"><a href="./07_report/Pope_Audit.pdf">Open Pope_Audit.pdf →</a></p>
+        </div>
+        <div class="card mini-card">
+          <h3>Browse the source repository</h3>
+          <p>Inspect the data download, inference sweep, scoring, analysis, and report source files on GitHub.</p>
+          <p style="margin-top:14px"><a href="https://github.com/ridoy-adhikary/Pope_scoring_sensitivity">Open repository →</a></p>
+        </div>
+      </div>
+      <div class="code-block" style="margin-top:20px"><code># Regenerate figures and the analysis table from the aggregate CSV
+bash run_all.sh</code></div>
+      <p class="note">The raw JSONL outputs are excluded from version control to keep the repository lightweight. The aggregate CSV, figures, scripts, and report preserve the auditable result.</p>
+    </section>
+
+    <section aria-labelledby="structure-title">
+      <div class="section-heading">
+        <div class="eyebrow">Repository map</div>
+        <h2 id="structure-title">What is included</h2>
+      </div>
+      <div class="card mini-card">
+        <p style="margin:0;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88rem;line-height:1.9;overflow-x:auto;white-space:pre;">00_preregistration/  → protocol amendments
+01_data/             → POPE data acquisition
+03_inference/        → Qwen sweep and frozen outputs
+04_scoring/          → extraction rules and aggregate CSV
+06_analysis/         → figures, tables, and analysis scripts
+07_report/           → final PDF and report source
+doc/                 → this GitHub Pages project site</p>
       </div>
     </section>
 
