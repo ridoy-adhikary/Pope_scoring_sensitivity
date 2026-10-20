@@ -1,0 +1,21 @@
+# Ignore model weights and smoke tests
+02_models/
+
+# Ignore raw logs
+10_logs/
+
+# Ignore raw 36,000 JSONL outputs (keep only the results CSV)
+03_inference/outputs/
+
+# Ignore python cache
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Ignore empty or redundant folders
+05_experiments/
+08_repro/
+09_application/
+
+# Ignore OS files
+.DS_Store
