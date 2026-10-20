@@ -37,6 +37,50 @@
     a { color: inherit; }
     .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
 
+    /* --- NAVBAR --- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      transition: all 0.3s ease;
+    }
+    nav .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .nav-brand {
+      font-weight: 800;
+      color: var(--navy);
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      overflow-x: auto;
+    }
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--navy); }
+    @media (max-width: 900px) { .nav-links { display: none; } }
+
+    /* --- TYPOGRAPHY & HEADERS --- */
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -55,7 +99,7 @@
     }
 
     header {
-      min-height: 650px;
+      min-height: 600px;
       display: grid;
       align-items: center;
       padding: 76px 0 92px;
@@ -131,7 +175,7 @@
     .button.secondary:hover { background: #fff; }
 
     main { padding-bottom: 90px; }
-    section { margin-top: 88px; }
+    section { margin-top: 88px; scroll-margin-top: 90px; }
     .section-heading { margin-bottom: 27px; }
     h2 {
       margin: 8px 0 0;
@@ -141,10 +185,11 @@
       line-height: 1.1;
     }
     .section-desc {
-      margin-top: 12px;
+      margin-top: 16px;
       color: #475569;
       font-size: 1.05rem;
-      max-width: 800px;
+      max-width: 820px;
+      line-height: 1.6;
     }
 
     .card {
@@ -175,23 +220,55 @@
     }
     .callout p { margin: 0; color: #1e3a5f; font-size: 1.12rem; line-height: 1.55; }
 
+    /* Abstract specific */
+    .abstract-box {
+      padding: 35px;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #334155;
+    }
+
     .figure-card { padding: clamp(16px, 3vw, 34px); }
     .figure-card img { display: block; width: 100%; height: auto; border-radius: 8px; }
     figcaption { margin: 20px auto 0; max-width: 780px; color: var(--muted); text-align: center; font-size: .95rem; }
 
-    .overview-grid, .artifact-grid, .figure-grid {
+    .overview-grid, .artifact-grid, .figure-grid, .problem-grid {
       display: grid;
       gap: 20px;
     }
     .overview-grid { grid-template-columns: repeat(3, 1fr); }
     .artifact-grid { grid-template-columns: repeat(2, 1fr); }
     .figure-grid { grid-template-columns: repeat(2, 1fr); }
+    .problem-grid { grid-template-columns: 1fr 1fr; }
 
     .mini-card { padding: 25px; }
     .mini-card h3 { margin: 0 0 8px; color: var(--navy); font-size: 1.05rem; }
     .mini-card p { margin: 0; color: var(--muted); font-size: .94rem; line-height: 1.6; }
     .mini-card a, .text-link { color: var(--blue); font-weight: 750; text-decoration: none; }
     .mini-card a:hover, .text-link:hover { text-decoration: underline; }
+
+    /* Problem/Solution blocks */
+    .prob-card { padding: 24px; border-left: 4px solid var(--red); background: #fffafb; }
+    .sol-card { padding: 24px; border-left: 4px solid var(--green); background: #f4fdf8; }
+    .prob-card h3 { color: var(--red); margin-top: 0; font-size: 1.05rem; }
+    .sol-card h3 { color: var(--green); margin-top: 0; font-size: 1.05rem; }
+    .prob-card p, .sol-card p { margin-bottom: 0; color: #475569; font-size: 0.95rem; }
+
+    /* Setup list */
+    .setup-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .setup-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+    }
+    .setup-list li:last-child { border-bottom: none; }
+    .setup-list strong { color: var(--navy); }
 
     .figure-tile { overflow: hidden; }
     .figure-tile img { display: block; width: 100%; height: 245px; object-fit: contain; background: #f8fafc; }
@@ -246,31 +323,14 @@
     .score.high { color: var(--green); background: var(--green-soft); }
     .score.mid { color: #9a5b00; background: #fff7e6; }
 
-    .limitation {
-      max-width: 850px;
-      padding: 28px 31px;
-      border-left: 4px solid var(--blue);
-      color: #475569;
-    }
+    .limitation { padding: 28px 31px; border-left: 4px solid var(--blue); color: #475569; }
     .limitation p { margin: 0; margin-bottom: 12px; }
     .limitation p:last-child { margin-bottom: 0; }
 
-    .references {
-      padding: 30px;
-    }
-    .references ol {
-      margin: 0;
-      padding-left: 20px;
-    }
-    .references li {
-      margin-bottom: 14px;
-      color: #475569;
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
-    .references li strong {
-      color: var(--navy);
-    }
+    .references { padding: 30px; }
+    .references ol { margin: 0; padding-left: 20px; }
+    .references li { margin-bottom: 14px; color: #475569; font-size: 0.95rem; line-height: 1.5; }
+    .references li strong { color: var(--navy); }
 
     footer {
       padding: 31px 0;
@@ -291,13 +351,30 @@
       .callout { grid-template-columns: 1fr; gap: 14px; padding: 23px; }
       .figure-card { padding: 12px; }
       .limitation { padding: 22px; }
-      .overview-grid, .artifact-grid, .figure-grid { grid-template-columns: 1fr; }
+      .overview-grid, .artifact-grid, .figure-grid, .problem-grid { grid-template-columns: 1fr; }
       .steps { grid-template-columns: 1fr; }
       footer .wrap { align-items: flex-start; flex-direction: column; }
     }
   </style>
 </head>
 <body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="wrap">
+      <a href="#" class="nav-brand">POPE Audit</a>
+      <ul class="nav-links">
+        <li><a href="#abstract">Abstract</a></li>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#method">Methodology</a></li>
+        <li><a href="#setup">Setup</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#repro">Reproducibility</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <header>
     <div class="wrap hero">
       <div class="eyebrow">Research audit · 2026</div>
@@ -316,77 +393,112 @@
   </header>
 
   <main class="wrap">
-    <!-- OVERVIEW SECTION -->
-    <section aria-labelledby="overview-title">
+
+    <!-- ABSTRACT SECTION -->
+    <section id="abstract" aria-labelledby="abstract-title">
       <div class="section-heading">
-        <div class="eyebrow">Project overview</div>
-        <h2 id="overview-title">A measurement audit for multimodal benchmarks</h2>
-        <p class="section-desc">As Vision-Language Models (VLMs) become increasingly capable, the benchmarks used to evaluate them must be scrutinized just as rigorously as the models themselves. This project investigates whether the standard scoring pipelines for the POPE benchmark introduce artificial variance.</p>
+        <div class="eyebrow">Abstract</div>
+        <h2 id="abstract-title">Summary of the Paper</h2>
       </div>
-      <div class="overview-grid">
-        <article class="card mini-card">
-          <h3>The Research Question</h3>
-          <p>How much of a reported POPE score is determined by the model's actual capability, and how much is merely an artifact of the prompt template and answer-extraction rule used by the researcher?</p>
-        </article>
-        <article class="card mini-card">
-          <h3>Experimental Control</h3>
-          <p>To isolate the harness from the model, Qwen2.5-VL-7B outputs are generated once and frozen. These identical 36,000 outputs are then replayed through multiple scoring configurations.</p>
-        </article>
-        <article class="card mini-card">
-          <h3>Dataset Scale</h3>
-          <p>9,000 POPE questions were evaluated across 4 prompt styles (P1, P3, P5, P6). This results in a massive, statistically robust dataset that exposes the hidden variance in standard evaluations.</p>
-        </article>
+      <div class="card abstract-box">
+        <p>POPE is a widely used benchmark for evaluating object hallucination in Vision-Language Models (VLMs), yet its scoring harness relies on a matching-based method that is highly under-specified in the literature. In this audit, we evaluate Qwen2.5-VL-7B on 9,000 POPE questions across 4 prompt templates and 6 answer-extraction rules. We find that the model's reported F1 score swings from <strong>0.000 to 0.868</strong> depending entirely on the evaluation harness. Specifically, strict exact-matching (R1) yields an F1 of 0.000 on standard prompts because the model answers in natural language, while substring-matching (R3) recovers the score to 0.836. Furthermore, forcing a one-word answer (Prompt P6) artificially inflates the score to 0.861. We conclude that benchmark scores are highly sensitive to under-specified scoring rules and propose a minimal reporting checklist to ensure evaluation transparency.</p>
       </div>
     </section>
 
-    <!-- TL;DR SECTION -->
-    <section aria-labelledby="tldr-title">
+    <!-- PROBLEM & SOLUTION SECTION -->
+    <section id="overview" aria-labelledby="overview-title">
       <div class="section-heading">
-        <div class="eyebrow">The central finding</div>
-        <h2 id="tldr-title">TL;DR: The 86-Point Illusion</h2>
-        <p class="section-desc">A model's reported score is not a neutral measurement. It is a joint function of the model and the evaluation code.</p>
+        <div class="eyebrow">The Problem & Solution</div>
+        <h2 id="overview-title">What this project solves, step-by-step</h2>
+        <p class="section-desc">Modern AI evaluations are often treated as absolute truth, but they are actually pipelines of code that can introduce massive bias. Here is how we broke down the problem and designed a controlled solution.</p>
       </div>
-      <div class="card callout">
-        <div class="callout-mark" aria-hidden="true">!</div>
-        <p>By holding Qwen2.5-VL-7B's outputs completely fixed, we demonstrate that benchmark scores are largely artifacts of the evaluation harness. A strict exact-match parser fails completely (<strong>F1 = 0.000</strong>) because the model generates natural language. However, a simple substring parser recovers high apparent capability (<strong>F1 = 0.836</strong>) without changing a single model weight.</p>
+      <div class="problem-grid">
+        <div class="card prob-card">
+          <h3>Problem 1: Brittle Parsers</h3>
+          <p>Standard evaluations assume the model will output exactly "Yes" or "No". If the model outputs "Yes, there is a dog," strict parsers crash and mark it as wrong, completely masking the model's true capability.</p>
+        </div>
+        <div class="card sol-card">
+          <h3>Solution 1: Extraction Rule Audit</h3>
+          <p>We implemented 6 distinct extraction rules (R1-R6), ranging from strict exact-match to probability-based log-likelihood, to prove how much the parser alone changes the final score.</p>
+        </div>
+        <div class="card prob-card">
+          <h3>Problem 2: Prompt Variability</h3>
+          <p>Researchers often rephrase the same question without realizing that slight wording changes can drastically alter how a VLM formats its output.</p>
+        </div>
+        <div class="card sol-card">
+          <h3>Solution 2: Prompt Template Isolation</h3>
+          <p>We tested 4 distinct prompt templates (Standard, Wording, Soft Format, Strict Format) across 9,000 questions to measure the exact variance introduced by phrasing alone.</p>
+        </div>
+
+        <div class="card prob-card">
+          <h3>Problem 3: Uncontrolled Environments</h3>
+          <p>If a model generates different answers on different runs (due to stochasticity), you can't isolate the effect of the evaluation code.</p>
+        </div>
+        <div class="card sol-card">
+          <h3>Solution 3: Frozen Outputs</h3>
+          <p>We generated 36,000 responses once and froze them in JSONL format. All subsequent scoring was done on this static dataset, guaranteeing absolute reproducibility.</p>
+        </div>
       </div>
     </section>
 
     <!-- ARCHITECTURE SECTION -->
-    <section aria-labelledby="architecture-title">
+    <section id="architecture" aria-labelledby="architecture-title">
       <div class="section-heading">
         <div class="eyebrow">How the audit works</div>
         <h2 id="architecture-title">Controlled evaluation architecture</h2>
-        <p class="section-desc">The pipeline is designed to decouple the AI model from the measurement tool. By freezing the outputs at the earliest possible stage, we ensure that any downstream score differences are caused entirely by the harness.</p>
+        <p class="section-desc">The pipeline is designed to decouple the AI model from the measurement tool. By freezing the outputs at the earliest possible stage, we guarantee that any downstream score differences are caused entirely by the harness.</p>
       </div>
       <figure class="card figure-card">
-        <img src="06_analysis/architecture.png" alt="POPE audit architecture showing the pipeline from input through prompt manipulation, model processing, scoring, and output.">
+        <img src="06_analysis/architecture.png" alt="POPE audit architecture showing the pipeline.">
         <figcaption>Identical inputs and frozen model outputs pass through controlled prompt and extraction variants: <strong>Input → Prompts → Model → Scoring → Output</strong>.</figcaption>
       </figure>
     </section>
 
-    <!-- METHOD SECTION -->
-    <section aria-labelledby="method-title">
+    <!-- SETUP & METHODOLOGY SECTION -->
+    <section id="setup" aria-labelledby="method-title">
       <div class="section-heading">
-        <div class="eyebrow">Experimental design</div>
-        <h2 id="method-title">One model, many measurement paths</h2>
-        <p class="section-desc">We systematically varied the two most under-specified components of the POPE evaluation pipeline: how the question is asked, and how the answer is parsed.</p>
+        <div class="eyebrow">Experimental Setup</div>
+        <h2 id="method-title">Hardware, Software, and Design</h2>
+        <p class="section-desc">To ensure complete transparency, all experimental conditions and hardware constraints are documented below.</p>
       </div>
-      <div class="steps">
-        <div class="step"><div class="step-number">01 / INPUT</div><strong>POPE samples</strong><span>500 MSCOCO images and 9,000 binary ground-truth questions are held constant.</span></div>
-        <div class="step"><div class="step-number">02 / PROMPT</div><strong>Templates P1–P6</strong><span>Wording and response-format instructions are varied deliberately to test instruction-following.</span></div>
-        <div class="step"><div class="step-number">03 / MODEL</div><strong>Frozen outputs</strong><span>Qwen2.5-VL-7B runs with 4-bit NF4 quantization, generating raw text and log-probabilities.</span></div>
-        <div class="step"><div class="step-number">04 / PARSER</div><strong>Rules R1–R6</strong><span>Exact-match, lowercase, contains, first-token, and probability paths are applied to the frozen data.</span></div>
-        <div class="step"><div class="step-number">05 / METRIC</div><strong>F1 audit</strong><span>Identical responses are converted into score distributions to measure ranking instability.</span></div>
+
+      <div class="overview-grid">
+        <div class="card mini-card">
+          <h3>Compute Infrastructure</h3>
+          <ul class="setup-list">
+            <li><strong>Server:</strong> Shared University Server</li>
+            <li><strong>GPUs:</strong> 4x NVIDIA RTX A4000</li>
+            <li><strong>VRAM:</strong> 16 GB per GPU</li>
+            <li><strong>Quantization:</strong> 4-bit NF4</li>
+          </ul>
+        </div>
+        <div class="card mini-card">
+          <h3>Software Stack</h3>
+          <ul class="setup-list">
+            <li><strong>Python:</strong> 3.10.22</li>
+            <li><strong>PyTorch:</strong> 2.7.1+cu118</li>
+            <li><strong>Transformers:</strong> 5.20.1</li>
+            <li><strong>Bnb:</strong> 0.50.2</li>
+          </ul>
+        </div>
+        <div class="card mini-card">
+          <h3>Model & Data</h3>
+          <ul class="setup-list">
+            <li><strong>Model:</strong> Qwen2.5-VL-7B</li>
+            <li><strong>Dataset:</strong> POPE (lmms-lab)</li>
+            <li><strong>Images:</strong> 500 MSCOCO</li>
+            <li><strong>Generations:</strong> 36,000</li>
+          </ul>
+        </div>
       </div>
     </section>
 
     <!-- RESULTS SECTION -->
-    <section aria-labelledby="results-title">
+    <section id="results" aria-labelledby="results-title">
       <div class="section-heading">
         <div class="eyebrow">Evidence</div>
         <h2 id="results-title">The score is in the harness</h2>
-        <p class="section-desc">The table below reveals the core anomaly. When Prompt P1 is paired with Rule R1 (Exact Match), the score drops to zero. But applying Rule R3 (Contains) to the exact same model outputs immediately reveals high capability. This 83-point swing is purely an artifact of the parser.</p>
+        <p class="section-desc">The table below reveals the core anomaly. When Prompt P1 is paired with Rule R1 (Exact Match), the score drops to zero. But applying Rule R3 (Contains) to the exact same model outputs immediately reveals high capability.</p>
       </div>
       <div class="card table-card">
         <table>
@@ -441,7 +553,7 @@
     </section>
 
     <!-- GALLERY SECTION -->
-    <section aria-labelledby="figures-title">
+    <section id="figures" aria-labelledby="figures-title">
       <div class="section-heading">
         <div class="eyebrow">Analysis gallery</div>
         <h2 id="figures-title">Every figure from the audit</h2>
@@ -467,7 +579,7 @@
     </section>
 
     <!-- REPRODUCIBILITY SECTION -->
-    <section aria-labelledby="repro-title">
+    <section id="repro" aria-labelledby="repro-title">
       <div class="section-heading">
         <div class="eyebrow">Open research record</div>
         <h2 id="repro-title">Reproduce and inspect</h2>
@@ -476,7 +588,7 @@
       <div class="artifact-grid">
         <div class="card mini-card">
           <h3>Read the complete report</h3>
-          <p>Download the 8-page research report, including the preregistration context, results, and discussion of construct validity.</p>
+          <p>Download the 8-page research report, including the preregistration context, results, and discussion.</p>
           <p style="margin-top:14px"><a href="./07_report/Pope_Audit.pdf">Open Pope_Audit.pdf →</a></p>
         </div>
         <div class="card mini-card">
@@ -488,23 +600,6 @@
       <div class="code-block" style="margin-top:20px"><code># Regenerate figures and the analysis table from the aggregate CSV
 bash run_all.sh</code></div>
       <p class="note">The raw JSONL outputs (36,000 records) are excluded from version control to keep the repository lightweight. The aggregate CSV, figures, scripts, and report preserve the auditable result.</p>
-    </section>
-
-    <!-- REPO STRUCTURE SECTION -->
-    <section aria-labelledby="structure-title">
-      <div class="section-heading">
-        <div class="eyebrow">Repository map</div>
-        <h2 id="structure-title">What is included</h2>
-      </div>
-      <div class="card mini-card">
-        <p style="margin:0;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88rem;line-height:1.9;overflow-x:auto;white-space:pre;">00_preregistration/  → protocol amendments and pre-registration
-01_data/             → POPE data acquisition scripts
-03_inference/        → Qwen sweep and generation scripts
-04_scoring/          → extraction rules, failure rules, and results.csv
-06_analysis/         → figures, tables, architecture, and analysis scripts
-07_report/           → final PDF and LaTeX report source
-docs/                → this GitHub Pages project site</p>
-      </div>
     </section>
 
     <!-- LIMITATIONS SECTION -->
@@ -519,12 +614,22 @@ docs/                → this GitHub Pages project site</p>
       </div>
     </section>
 
+    <!-- ACKNOWLEDGEMENTS SECTION -->
+    <section id="acknowledgements" aria-labelledby="ack-title">
+      <div class="section-heading">
+        <div class="eyebrow">Acknowledgements</div>
+        <h2 id="ack-title">Institutional Support</h2>
+      </div>
+      <div class="card mini-card" style="border-left: 4px solid var(--navy);">
+        <p>This research was conducted at <strong>Sichuan University</strong>. The author gratefully acknowledges the <strong>Machine Intelligence Lab</strong> for providing the computational infrastructure and GPU resources (4x NVIDIA RTX A4000) that made this audit possible. The author also thanks the open-source community behind the POPE benchmark, Qwen, and HuggingFace for providing the tools and datasets used in this study.</p>
+      </div>
+    </section>
+
     <!-- REFERENCES SECTION -->
-    <section aria-labelledby="references-title">
+    <section id="references" aria-labelledby="references-title">
       <div class="section-heading">
         <div class="eyebrow">Literature</div>
         <h2 id="references-title">References</h2>
-        <p class="section-desc">This audit builds upon recent work in benchmark validity, vision-language modeling, and leaderboard dynamics.</p>
       </div>
       <div class="card references">
         <ol>
