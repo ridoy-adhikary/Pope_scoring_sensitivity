@@ -36,6 +36,7 @@
     }
     a { color: inherit; }
     .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -52,6 +53,7 @@
       background: var(--blue);
       content: "";
     }
+
     header {
       min-height: 650px;
       display: grid;
@@ -127,6 +129,7 @@
     .button.primary:hover { background: #173b68; }
     .button.secondary { color: var(--navy); border-color: #cbd5e1; background: rgba(255,255,255,.72); }
     .button.secondary:hover { background: #fff; }
+
     main { padding-bottom: 90px; }
     section { margin-top: 88px; }
     .section-heading { margin-bottom: 27px; }
@@ -137,6 +140,13 @@
       letter-spacing: -.045em;
       line-height: 1.1;
     }
+    .section-desc {
+      margin-top: 12px;
+      color: #475569;
+      font-size: 1.05rem;
+      max-width: 800px;
+    }
+
     .card {
       border: 1px solid var(--line);
       border-radius: 14px;
@@ -164,9 +174,11 @@
       font-weight: 900;
     }
     .callout p { margin: 0; color: #1e3a5f; font-size: 1.12rem; line-height: 1.55; }
+
     .figure-card { padding: clamp(16px, 3vw, 34px); }
     .figure-card img { display: block; width: 100%; height: auto; border-radius: 8px; }
     figcaption { margin: 20px auto 0; max-width: 780px; color: var(--muted); text-align: center; font-size: .95rem; }
+
     .overview-grid, .artifact-grid, .figure-grid {
       display: grid;
       gap: 20px;
@@ -174,21 +186,25 @@
     .overview-grid { grid-template-columns: repeat(3, 1fr); }
     .artifact-grid { grid-template-columns: repeat(2, 1fr); }
     .figure-grid { grid-template-columns: repeat(2, 1fr); }
+
     .mini-card { padding: 25px; }
     .mini-card h3 { margin: 0 0 8px; color: var(--navy); font-size: 1.05rem; }
-    .mini-card p { margin: 0; color: var(--muted); font-size: .94rem; }
+    .mini-card p { margin: 0; color: var(--muted); font-size: .94rem; line-height: 1.6; }
     .mini-card a, .text-link { color: var(--blue); font-weight: 750; text-decoration: none; }
     .mini-card a:hover, .text-link:hover { text-decoration: underline; }
+
     .figure-tile { overflow: hidden; }
     .figure-tile img { display: block; width: 100%; height: 245px; object-fit: contain; background: #f8fafc; }
     .figure-tile .tile-copy { padding: 18px 20px 20px; }
     .figure-tile h3 { margin: 0 0 5px; color: var(--navy); font-size: 1rem; }
     .figure-tile p { margin: 0; color: var(--muted); font-size: .88rem; }
+
     .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
     .step { padding: 20px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
     .step-number { color: var(--blue); font-size: .75rem; font-weight: 850; letter-spacing: .1em; }
     .step strong { display: block; margin-top: 7px; color: var(--navy); }
     .step span { display: block; margin-top: 6px; color: var(--muted); font-size: .85rem; line-height: 1.45; }
+
     .code-block {
       padding: 22px 25px;
       overflow-x: auto;
@@ -199,6 +215,7 @@
     }
     .code-block code { white-space: pre; }
     .note { margin-top: 15px; color: var(--muted); font-size: .9rem; }
+
     .table-card { overflow-x: auto; }
     table { width: 100%; min-width: 700px; border-collapse: collapse; text-align: left; }
     caption { padding: 24px 26px 12px; color: var(--muted); text-align: left; font-size: .9rem; }
@@ -215,6 +232,7 @@
     tbody tr:hover { background: #f8fbff; }
     tbody tr:last-child td { border-bottom: 0; }
     td:first-child { color: var(--navy); font-weight: 800; }
+
     .score {
       display: inline-block;
       min-width: 58px;
@@ -227,13 +245,33 @@
     .score.zero { color: var(--red); background: var(--red-soft); }
     .score.high { color: var(--green); background: var(--green-soft); }
     .score.mid { color: #9a5b00; background: #fff7e6; }
+
     .limitation {
       max-width: 850px;
       padding: 28px 31px;
       border-left: 4px solid var(--blue);
       color: #475569;
     }
-    .limitation p { margin: 0; }
+    .limitation p { margin: 0; margin-bottom: 12px; }
+    .limitation p:last-child { margin-bottom: 0; }
+
+    .references {
+      padding: 30px;
+    }
+    .references ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .references li {
+      margin-bottom: 14px;
+      color: #475569;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .references li strong {
+      color: var(--navy);
+    }
+
     footer {
       padding: 31px 0;
       border-top: 1px solid var(--line);
@@ -243,6 +281,7 @@
     footer .wrap { display: flex; justify-content: space-between; gap: 20px; }
     footer a { color: var(--navy); font-weight: 700; text-decoration: none; }
     footer a:hover { color: var(--blue); }
+
     @media (max-width: 640px) {
       .wrap { width: min(100% - 28px, 1120px); }
       header { min-height: 590px; padding: 54px 0 65px; }
@@ -263,7 +302,7 @@
     <div class="wrap hero">
       <div class="eyebrow">Research audit · 2026</div>
       <h1>The Harness Is Part of the Benchmark</h1>
-      <p class="subtitle">A controlled audit of prompt and extraction sensitivity in POPE.</p>
+      <p class="subtitle">A controlled audit of prompt and extraction sensitivity in the POPE object-hallucination benchmark.</p>
       <div class="author">
         <span><strong>Ridoy Kumar Adhikary</strong></span>
         <span>Sichuan University</span>
@@ -277,42 +316,48 @@
   </header>
 
   <main class="wrap">
+    <!-- OVERVIEW SECTION -->
     <section aria-labelledby="overview-title">
       <div class="section-heading">
         <div class="eyebrow">Project overview</div>
         <h2 id="overview-title">A measurement audit for multimodal benchmarks</h2>
+        <p class="section-desc">As Vision-Language Models (VLMs) become increasingly capable, the benchmarks used to evaluate them must be scrutinized just as rigorously as the models themselves. This project investigates whether the standard scoring pipelines for the POPE benchmark introduce artificial variance.</p>
       </div>
       <div class="overview-grid">
         <article class="card mini-card">
-          <h3>Research question</h3>
-          <p>How much of a reported POPE score comes from the model, and how much comes from the prompt and extraction harness around it?</p>
+          <h3>The Research Question</h3>
+          <p>How much of a reported POPE score is determined by the model's actual capability, and how much is merely an artifact of the prompt template and answer-extraction rule used by the researcher?</p>
         </article>
         <article class="card mini-card">
-          <h3>Experimental control</h3>
-          <p>Qwen2.5-VL-7B outputs are frozen once, then replayed under multiple prompt and answer-parsing configurations.</p>
+          <h3>Experimental Control</h3>
+          <p>To isolate the harness from the model, Qwen2.5-VL-7B outputs are generated once and frozen. These identical 36,000 outputs are then replayed through multiple scoring configurations.</p>
         </article>
         <article class="card mini-card">
-          <h3>Dataset scale</h3>
-          <p>36,000 JSONL responses were generated for the controlled audit. Only compact aggregate results are tracked in Git.</p>
+          <h3>Dataset Scale</h3>
+          <p>9,000 POPE questions were evaluated across 4 prompt styles (P1, P3, P5, P6). This results in a massive, statistically robust dataset that exposes the hidden variance in standard evaluations.</p>
         </article>
       </div>
     </section>
 
+    <!-- TL;DR SECTION -->
     <section aria-labelledby="tldr-title">
       <div class="section-heading">
         <div class="eyebrow">The central finding</div>
-        <h2 id="tldr-title">TL;DR</h2>
+        <h2 id="tldr-title">TL;DR: The 86-Point Illusion</h2>
+        <p class="section-desc">A model's reported score is not a neutral measurement. It is a joint function of the model and the evaluation code.</p>
       </div>
       <div class="card callout">
         <div class="callout-mark" aria-hidden="true">!</div>
-        <p>By holding Qwen2.5-VL-7B's outputs completely fixed, we demonstrate that benchmark scores are largely artifacts of the evaluation harness. A strict parser fails completely (<strong>F1 = 0.000</strong>), while a loose parser recovers high capability (<strong>F1 = 0.836</strong>).</p>
+        <p>By holding Qwen2.5-VL-7B's outputs completely fixed, we demonstrate that benchmark scores are largely artifacts of the evaluation harness. A strict exact-match parser fails completely (<strong>F1 = 0.000</strong>) because the model generates natural language. However, a simple substring parser recovers high apparent capability (<strong>F1 = 0.836</strong>) without changing a single model weight.</p>
       </div>
     </section>
 
+    <!-- ARCHITECTURE SECTION -->
     <section aria-labelledby="architecture-title">
       <div class="section-heading">
         <div class="eyebrow">How the audit works</div>
         <h2 id="architecture-title">Controlled evaluation architecture</h2>
+        <p class="section-desc">The pipeline is designed to decouple the AI model from the measurement tool. By freezing the outputs at the earliest possible stage, we ensure that any downstream score differences are caused entirely by the harness.</p>
       </div>
       <figure class="card figure-card">
         <img src="06_analysis/architecture.png" alt="POPE audit architecture showing the pipeline from input through prompt manipulation, model processing, scoring, and output.">
@@ -320,24 +365,28 @@
       </figure>
     </section>
 
+    <!-- METHOD SECTION -->
     <section aria-labelledby="method-title">
       <div class="section-heading">
         <div class="eyebrow">Experimental design</div>
         <h2 id="method-title">One model, many measurement paths</h2>
+        <p class="section-desc">We systematically varied the two most under-specified components of the POPE evaluation pipeline: how the question is asked, and how the answer is parsed.</p>
       </div>
       <div class="steps">
-        <div class="step"><div class="step-number">01 / INPUT</div><strong>POPE samples</strong><span>Questions, images, and ground-truth labels are held constant.</span></div>
-        <div class="step"><div class="step-number">02 / PROMPT</div><strong>Templates P1–P6</strong><span>Wording and response-format instructions are varied deliberately.</span></div>
-        <div class="step"><div class="step-number">03 / MODEL</div><strong>Frozen outputs</strong><span>Qwen2.5-VL-7B runs with 4-bit NF4 quantization.</span></div>
-        <div class="step"><div class="step-number">04 / PARSER</div><strong>Rules R1–R6</strong><span>Exact, lowercase, contains, first-token, and probability paths are replayed.</span></div>
-        <div class="step"><div class="step-number">05 / METRIC</div><strong>F1 audit</strong><span>Identical responses produce directly comparable score distributions.</span></div>
+        <div class="step"><div class="step-number">01 / INPUT</div><strong>POPE samples</strong><span>500 MSCOCO images and 9,000 binary ground-truth questions are held constant.</span></div>
+        <div class="step"><div class="step-number">02 / PROMPT</div><strong>Templates P1–P6</strong><span>Wording and response-format instructions are varied deliberately to test instruction-following.</span></div>
+        <div class="step"><div class="step-number">03 / MODEL</div><strong>Frozen outputs</strong><span>Qwen2.5-VL-7B runs with 4-bit NF4 quantization, generating raw text and log-probabilities.</span></div>
+        <div class="step"><div class="step-number">04 / PARSER</div><strong>Rules R1–R6</strong><span>Exact-match, lowercase, contains, first-token, and probability paths are applied to the frozen data.</span></div>
+        <div class="step"><div class="step-number">05 / METRIC</div><strong>F1 audit</strong><span>Identical responses are converted into score distributions to measure ranking instability.</span></div>
       </div>
     </section>
 
+    <!-- RESULTS SECTION -->
     <section aria-labelledby="results-title">
       <div class="section-heading">
         <div class="eyebrow">Evidence</div>
         <h2 id="results-title">The score is in the harness</h2>
+        <p class="section-desc">The table below reveals the core anomaly. When Prompt P1 is paired with Rule R1 (Exact Match), the score drops to zero. But applying Rule R3 (Contains) to the exact same model outputs immediately reveals high capability. This 83-point swing is purely an artifact of the parser.</p>
       </div>
       <div class="card table-card">
         <table>
@@ -391,6 +440,7 @@
       </div>
     </section>
 
+    <!-- GALLERY SECTION -->
     <section aria-labelledby="figures-title">
       <div class="section-heading">
         <div class="eyebrow">Analysis gallery</div>
@@ -416,15 +466,17 @@
       </div>
     </section>
 
+    <!-- REPRODUCIBILITY SECTION -->
     <section aria-labelledby="repro-title">
       <div class="section-heading">
         <div class="eyebrow">Open research record</div>
         <h2 id="repro-title">Reproduce and inspect</h2>
+        <p class="section-desc">Transparency is a core requirement of trustworthy AI evaluation. All code, the pre-registration protocol, and the aggregated scoring outputs are publicly available.</p>
       </div>
       <div class="artifact-grid">
         <div class="card mini-card">
           <h3>Read the complete report</h3>
-          <p>Download the 8-page research report, including the preregistration context, results, and discussion.</p>
+          <p>Download the 8-page research report, including the preregistration context, results, and discussion of construct validity.</p>
           <p style="margin-top:14px"><a href="./07_report/Pope_Audit.pdf">Open Pope_Audit.pdf →</a></p>
         </div>
         <div class="card mini-card">
@@ -435,39 +487,62 @@
       </div>
       <div class="code-block" style="margin-top:20px"><code># Regenerate figures and the analysis table from the aggregate CSV
 bash run_all.sh</code></div>
-      <p class="note">The raw JSONL outputs are excluded from version control to keep the repository lightweight. The aggregate CSV, figures, scripts, and report preserve the auditable result.</p>
+      <p class="note">The raw JSONL outputs (36,000 records) are excluded from version control to keep the repository lightweight. The aggregate CSV, figures, scripts, and report preserve the auditable result.</p>
     </section>
 
+    <!-- REPO STRUCTURE SECTION -->
     <section aria-labelledby="structure-title">
       <div class="section-heading">
         <div class="eyebrow">Repository map</div>
         <h2 id="structure-title">What is included</h2>
       </div>
       <div class="card mini-card">
-        <p style="margin:0;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88rem;line-height:1.9;overflow-x:auto;white-space:pre;">00_preregistration/  → protocol amendments
-01_data/             → POPE data acquisition
-03_inference/        → Qwen sweep and frozen outputs
-04_scoring/          → extraction rules and aggregate CSV
-06_analysis/         → figures, tables, and analysis scripts
-07_report/           → final PDF and report source
+        <p style="margin:0;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88rem;line-height:1.9;overflow-x:auto;white-space:pre;">00_preregistration/  → protocol amendments and pre-registration
+01_data/             → POPE data acquisition scripts
+03_inference/        → Qwen sweep and generation scripts
+04_scoring/          → extraction rules, failure rules, and results.csv
+06_analysis/         → figures, tables, architecture, and analysis scripts
+07_report/           → final PDF and LaTeX report source
 docs/                → this GitHub Pages project site</p>
       </div>
     </section>
 
+    <!-- LIMITATIONS SECTION -->
     <section aria-labelledby="limitations-title">
       <div class="section-heading">
         <div class="eyebrow">Scope</div>
-        <h2 id="limitations-title">Limitations</h2>
+        <h2 id="limitations-title">Limitations and Future Work</h2>
       </div>
       <div class="card limitation">
-        <p>Due to shared-server network restrictions blocking AWS and PyPI, this audit evaluated only one model: <strong>Qwen2.5-VL-7B</strong>. Even within this single-model study, the effect is so extreme that it is highly likely to generalize to other model-and-harness combinations.</p>
+        <p>Due to shared-server network restrictions (specifically, firewalls blocking AWS CDN and PyPI), this audit evaluated only one model: <strong>Qwen2.5-VL-7B</strong>. Models such as LLaVA-1.5 and InternVL2 could not be downloaded.</p>
+        <p>Despite this single-model constraint, the effect is so extreme (an 86-point swing) that it is highly likely to generalize across other model architectures. Future work will extend this audit to multi-model comparisons and apply the same harness-sensitivity analysis to other multimodal benchmarks such as MMMU and SEED-Bench.</p>
+      </div>
+    </section>
+
+    <!-- REFERENCES SECTION -->
+    <section aria-labelledby="references-title">
+      <div class="section-heading">
+        <div class="eyebrow">Literature</div>
+        <h2 id="references-title">References</h2>
+        <p class="section-desc">This audit builds upon recent work in benchmark validity, vision-language modeling, and leaderboard dynamics.</p>
+      </div>
+      <div class="card references">
+        <ol>
+          <li><strong>Li, Y., et al. (2023).</strong> Evaluating Object Hallucination in Large Vision-Language Models. <em>EMNLP 2023.</em> arXiv:2305.10355.</li>
+          <li><strong>Bean, A. M., et al. (2025).</strong> Measuring what Matters: Construct Validity in Large Language Model Benchmarks. <em>NeurIPS 2025.</em> arXiv:2511.04703.</li>
+          <li><strong>Bai, J., et al. (2023).</strong> Qwen-VL: A Frontier Large Vision-Language Model with Versatile Abilities. <em>arXiv preprint.</em> arXiv:2308.12966.</li>
+          <li><strong>Singh, S., et al. (2025).</strong> The Leaderboard Illusion. <em>NeurIPS 2025.</em> arXiv:2504.20879.</li>
+          <li><strong>Neuhaus, Y., & Hein, M. (2025).</strong> RePOPE: Impact of Annotation Errors on the POPE Benchmark. <em>arXiv preprint.</em> arXiv:2504.15707.</li>
+          <li><strong>Schmalfuss, J., et al. (2025).</strong> PARC: A Quantitative Framework Uncovering the Symmetries within Vision Language Models. <em>CVPR 2025.</em></li>
+          <li><strong>Liu, H., et al. (2023).</strong> Visual Instruction Tuning. <em>NeurIPS 2023.</em></li>
+        </ol>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="wrap">
-      <span>© 2026 Ridoy Kumar Adhikary</span>
+      <span>© 2026 Ridoy Kumar Adhikary · Sichuan University</span>
       <a href="https://github.com/ridoy-adhikary">github.com/ridoy-adhikary&nbsp;↗</a>
     </div>
   </footer>
