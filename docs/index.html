@@ -398,7 +398,7 @@
     <section id="abstract" aria-labelledby="abstract-title">
       <div class="section-heading">
         <div class="eyebrow">Abstract</div>
-        <h2 id="abstract-title">Summary of the Paper</h2>
+        <h2 id="abstract-title">Summary of the Project</h2>
       </div>
       <div class="card abstract-box">
         <p>POPE is a widely used benchmark for evaluating object hallucination in Vision-Language Models (VLMs), yet its scoring harness relies on a matching-based method that is highly under-specified in the literature. In this audit, we evaluate Qwen2.5-VL-7B on 9,000 POPE questions across 4 prompt templates and 6 answer-extraction rules. We find that the model's reported F1 score swings from <strong>0.000 to 0.868</strong> depending entirely on the evaluation harness. Specifically, strict exact-matching (R1) yields an F1 of 0.000 on standard prompts because the model answers in natural language, while substring-matching (R3) recovers the score to 0.836. Furthermore, forcing a one-word answer (Prompt P6) artificially inflates the score to 0.861. We conclude that benchmark scores are highly sensitive to under-specified scoring rules and propose a minimal reporting checklist to ensure evaluation transparency.</p>
@@ -621,7 +621,7 @@ bash run_all.sh</code></div>
         <h2 id="ack-title">Institutional Support</h2>
       </div>
       <div class="card mini-card" style="border-left: 4px solid var(--navy);">
-        <p>This research was conducted at <strong>Sichuan University</strong>. The author gratefully acknowledges the <strong>Machine Intelligence Lab</strong> for providing the computational infrastructure and GPU resources (4x NVIDIA RTX A4000) that made this audit possible. The author also thanks the open-source community behind the POPE benchmark, Qwen, and HuggingFace for providing the tools and datasets used in this study.</p>
+        <p>This project was conducted at <strong>Sichuan University</strong>. The author gratefully acknowledges the <strong>Machine Intelligence Lab</strong> for providing the computational infrastructure and GPU resources (4x NVIDIA RTX A4000) that made this audit possible. The author also thanks the open-source community behind the POPE benchmark, Qwen, and HuggingFace for providing the tools and datasets used in this study.</p>
       </div>
     </section>
 
